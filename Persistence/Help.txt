@@ -1,0 +1,27 @@
+Entity framework pkg for vs code
+===================================
+
+ctrl+shift+p -->enter nuget gallery-->search Microsoft.entityframeworkcore.Sqlite
+
+
+
+https://www.nuget.org/packages/dotnet-ef
+
+creating Entity framework code first migration
+================================================
+dotnet tool install --global dotnet-ef --version 6.0.6
+dotnet tool list --global 
+
+dotnet ef -h
+dotnet ef migrations add InitialCreate -p Persistence/  -s API
+
+dotnet ef database -h
+
+dotnet watch run
+
+Ctrl+shift+p --> sqlite-->open database
+
+
+===============================================
+Git Commands to push code
+===============================================
