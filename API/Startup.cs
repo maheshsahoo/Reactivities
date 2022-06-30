@@ -13,6 +13,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Persistence;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
+using Application.Activities;
+using Application.Core;
+using API.Extensions;
 
 namespace API
 {
@@ -32,24 +36,8 @@ namespace API
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
-            services.AddDbContext<DataContext>(opt =>
-            {
-             opt.UseSqlite(_config.GetConnectionString("DefaultConnection"));
-            
-            });
+            services.AddApplicationServices(_config);
 
-            services.AddCors(opt=>
-            {
-                opt.AddPolicy("CorsPolicy",policy=>
-                {
-                          policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("*");
-                });
-            }
-            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
